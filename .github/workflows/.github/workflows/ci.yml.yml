@@ -1,0 +1,19 @@
+name: Analyze PC Performance
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run performance script
+      run: ./performance_script.sh
